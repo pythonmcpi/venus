@@ -102,7 +102,7 @@ function transitions.fade.state:draw()
     end
 
     love.graphics.setColor(0, 0, 0, transitions.fade.alpha)
-    love.graphics.rectangle("fill", 0, 0, love.window.getDimensions())
+    love.graphics.rectangle("fill", 0, 0, love.graphics.getDimensions())
     love.graphics.setColor(255,255,255)
 end
 
@@ -151,7 +151,7 @@ end
 function transitions.slide.switch(to, duration, goal_xpos, goal_ypos)
     transitions.slide.xpos = 0
     transitions.slide.ypos = 0
-    transitions.slide.goal_xpos = goal_xpos or -love.window.getWidth()
+    transitions.slide.goal_xpos = goal_xpos or -love.graphics.getWidth()
     transitions.slide.goal_ypos = goal_ypos or 0
     
     transitions.slide.pre = venus.current
@@ -167,17 +167,17 @@ transitions.slide_left = transitions.slide
 
 transitions.slide_right = {}
 function transitions.slide_right.switch(to, duration)
-    transitions.slide.switch(to, duration, love.window.getWidth(), 0)
+    transitions.slide.switch(to, duration, love.graphics.getWidth(), 0)
 end
 
 transitions.slide_down = {}
 function transitions.slide_down.switch(to, duration)
-    transitions.slide.switch(to, duration, 0, love.window.getHeight())
+    transitions.slide.switch(to, duration, 0, love.graphics.getHeight())
 end
 
 transitions.slide_up = {}
 function transitions.slide_up.switch(to, duration)
-    transitions.slide.switch(to, duration, 0, -love.window.getHeight())
+    transitions.slide.switch(to, duration, 0, -love.graphics.getHeight())
 end
 
 return venus
